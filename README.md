@@ -1,46 +1,61 @@
-# brew-beck
+# Homebrew Tap for Beck
 
-Homebrew tap for [Beck](https://github.com/beckn-cloud/beck) — self-hosted PaaS CLI (Incus + Caddy + WireGuard).
+[![Formula](https://img.shields.io/badge/Formula-beck-blue.svg)](Formula/beck.rb)
+[![Version](https://img.shields.io/github/v/release/beckn-cloud/beck)](https://github.com/beckn-cloud/beck/releases)
+
+Homebrew formula repository for **Beck** — self-hosted PaaS CLI.
 
 ## Installation
 
 ```bash
+# Add tap
 brew tap beckn-cloud/brew-beck
+
+# Install CLI
 brew install beck
 ```
-
-## Formula
-
-| Formula | Description |
-|---------|-------------|
-| `beck` | Beck — self-hosted PaaS CLI for managing infrastructure and applications across multiple providers |
 
 ## Usage
 
 ```bash
-# Initialize configuration
-beck config init
+# Verify installation
+beck version
 
-# Login to beck-server
-beck login
+# Login to your server
+beck auth login --server https://your-beck-server:8443
 
-# Manage hosts
-beck hosts list
-beck hosts add my-host --endpoint=incus://host.example.com
-
-# Deploy applications
-beck apps deploy my-app --image=ghcr.io/org/app:v1 --regions=sg,jp
-
-# Manage domains
-beck domains list
-beck domains add example.com --app=my-app
-
-# View audit log
-beck audit list
+# Deploy an app
+beck apps deploy my-api --image ghcr.io/org/api:v1 --port 8080 --regions sg
 ```
 
-## How it works
+## Formula Details
 
-This tap is automatically updated by [GoReleaser](https://goreleaser.com/) when a new release is published to the [beck](https://github.com/beckn-cloud/beck) repository.
+| Field | Value |
+|-------|-------|
+| **Name** | `beck` |
+| **Description** | Self-hosted PaaS CLI (Incus + Caddy + WireGuard) |
+| **Homepage** | https://github.com/beckn-cloud/beck |
+| **License** | MIT |
+| **Platforms** | macOS (ARM64/Intel), Linux (ARM64/Intel) |
 
-The formula is generated from the `.goreleaser.yml` configuration in the main repository.
+## Updating Formula
+
+The formula is automatically updated by [GoReleaser](https://goreleaser.com/) when a new release is published to [beckn-cloud/beck](https://github.com/beckn-cloud/beck).
+
+Manual update (if needed):
+```bash
+brew upgrade beck
+```
+
+## Uninstall
+
+```bash
+brew uninstall beck
+brew untap beckn-cloud/brew-beck
+```
+
+## Related
+
+- **Main Repo**: https://github.com/beckn-cloud/beck
+- **Infrastructure**: https://github.com/beckn-cloud/beckflare
+- **App Manifests**: https://github.com/beckn-cloud/beck-apps
