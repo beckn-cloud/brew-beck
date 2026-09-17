@@ -1,1 +1,0 @@
-{"version": "0.6.293", "architecture": {"64bit": {"url": "https://github.com/brevdev/brev-cli/releases/download/v0.6.293/brev-cli_0.6.293_darwin_amd64.tar.gz", "bin": ["brev"], "hash": "c3db72d9c8bdc594ff8febcba521825fcee09d1c455431b7c0f7de30ffa5f115"}}, "homepage": "https://docs.beck.dev", "license": "MIT", "description": "CLI tool for managing workspaces provided by beck.dev"}
