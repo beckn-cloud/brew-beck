@@ -9,44 +9,42 @@ class Beck < Formula
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-v0.1.0-darwin-arm64.tar.gz"
-      sha256 "0f413a92443a280dbcfb49e17b67a1690c0663a944bfd543febc178ea09d3037"
+    if Hardware::CPU.intel?
+      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-0.1.0-darwin-amd64.tar.gz"
+      sha256 "2ed405adfda7912b673b3771e6daf2802650f1cb009deb587de486b94787116e"
 
-      def install
+      define_method(:install) do
         bin.install "beck"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-v0.1.0-darwin-amd64.tar.gz"
-      sha256 "557176193c2d0deab61483d4a6e5a5a161cd3adff324a28cc4b3f082d8b8844f"
+    if Hardware::CPU.arm?
+      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-0.1.0-darwin-arm64.tar.gz"
+      sha256 "bdd2349cb56f8ecebf13737890a898bd80986b1fb9c1b13e21d43f90a608f7b2"
 
-      def install
+      define_method(:install) do
         bin.install "beck"
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-v0.1.0-linux-arm64.tar.gz"
-      sha256 "5640329af9f13ffa87ca0e07eba947d623c9c9e2a737cbcacc0c47ae096af3cb"
-
-      def install
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-0.1.0-linux-amd64.tar.gz"
+      sha256 "009bbbe0e3f2fec825d55c85bf1048e9cabab62c4bc77843237f1874e565c758"
+      define_method(:install) do
         bin.install "beck"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-v0.1.0-linux-amd64.tar.gz"
-      sha256 "5b68c445961d25c75125d1c2bb544facb07bac567679ebfa27e068c5857c8f15"
-
-      def install
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/beckn-cloud/beck/releases/download/v0.1.0/beck-0.1.0-linux-arm64.tar.gz"
+      sha256 "c35a69cb1e704983b95bb468ca9de72819d66d57b3545fdc137255d1d53e3b23"
+      define_method(:install) do
         bin.install "beck"
       end
     end
   end
 
   test do
-    system "#{bin}/beck", "version"
+    system "#{bin}/beck version"
   end
 end
